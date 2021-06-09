@@ -1,5 +1,7 @@
 ## v2 of my personal website hosted on GitHub Pages (WIP)
 
+Fored from [evenbettermotherfuckingwebsite](https://github.com/setetres/evenbettermotherfuckingwebsite)
+
 
 - ### [knowledge](https://github.com/gdmoney/knowledge)
 
