@@ -1,12 +1,12 @@
-| [![evenbettermotherfuckingwebsite](http://setetres.s3.amazonaws.com/setetres.st/img/share-ebmfw.png?v=3&raw=true)](http://evenbettermotherfucking.website) |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+## v2 of my personal website hosted on GitHub Pages (WIP)
 
-[![Github License](https://img.shields.io/github/license/setetres/evenbettermotherfuckingwebsite.svg)](https://github.com/setetres/evenbettermotherfuckingwebsite/blob/master/LICENSE)
 
-License
--------
+- ### [knowledge](https://github.com/gdmoney/knowledge)
 
-[CC-BY-4.0]
+- ### [reading](https://github.com/gdmoney/reading)
 
-[http://evenbettermotherfucking.website]: http://evenbettermotherfucking.website
-[CC-BY-4.0]: http://creativecommons.org/licenses/by/4.0
+- ### [quotes](https://github.com/gdmoney/quotes)
+
+- ### [fitness](https://github.com/gdmoney/fitness)
+
+- ### [personal-development](https://github.com/gdmoney/personal-development)
