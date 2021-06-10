@@ -1,4 +1,4 @@
-## v2 of my personal website hosted on GitHub Pages (WIP)
+## v2 of my personal website hosted on GitHub Pages
 
 Forked from [evenbettermotherfuckingwebsite](https://github.com/setetres/evenbettermotherfuckingwebsite)
 
