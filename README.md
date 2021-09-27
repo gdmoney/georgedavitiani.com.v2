@@ -1,7 +1,5 @@
 ## v2 of my personal website hosted on GitHub Pages, [v1 here](https://github.com/gdmoney/georgedavitiani.com.v1)
 
-Forked from [evenbettermotherfuckingwebsite](https://github.com/setetres/evenbettermotherfuckingwebsite)
-
 
 - ### [knowledge](https://github.com/gdmoney/knowledge)
 
