@@ -8,5 +8,3 @@
 - ### [quotes](https://github.com/gdmoney/quotes)
 
 - ### [fitness](https://github.com/gdmoney/fitness)
-
-- ### [personal-development](https://github.com/gdmoney/personal-development)
