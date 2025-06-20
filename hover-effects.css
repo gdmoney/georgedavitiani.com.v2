@@ -1,0 +1,30 @@
+/* Hover effects for table cells containing images */
+table td {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 8px;
+}
+
+table td:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* Hover effects for images */
+table td img {
+    transition: opacity 0.3s ease;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+table td a:hover img {
+    opacity: 0.8;
+}
+
+/* Hover effect for email link in header */
+header h1 a {
+    transition: opacity 0.3s ease;
+}
+
+header h1 a:hover {
+    opacity: 0.7;
+}
