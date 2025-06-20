@@ -11,12 +11,12 @@ table td:hover {
 /* Hover effects for images */
 table td img {
     background-color: white;
-    transition: opacity 0.3s ease;
+    /* transition: opacity 0.3s ease; */
 }
 
 /* Hover effect for email link in header */
 header h1 a {
-    transition: opacity 0.3s ease;
+    /* transition: opacity 0.3s ease; */
 }
 
 header h1 a:hover {
