@@ -11,6 +11,7 @@ table td:hover {
 
 /* Hover effects for images */
 table td img {
+    background-color: white;
     transition: opacity 0.3s ease;
     border-radius: 4px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
