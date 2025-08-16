@@ -14,9 +14,7 @@
             table td:hover {transform: translateY(-5px);}
             header a img {transition: transform 0.3s ease;}
             header a img:hover {transform: translateY(-2px);}
-            header a {
-                text-decoration: none;
-            }
+            header a {text-decoration: none;}
         </style>
     </head>
     <body>
@@ -186,6 +184,15 @@
             // Optional: close modal with Escape key
             document.addEventListener('keydown', function (e) {
                 if (e.key === "Escape") closePwGen();
+                // Copy password with Ctrl+C (Windows/Linux) or Cmd+C (Mac) when input is focused
+                const pwField = document.getElementById('result');
+                if (
+                    document.activeElement === pwField &&
+                    ((e.ctrlKey && e.key === 'c') || (e.metaKey && e.key === 'c'))
+                ) {
+                    e.preventDefault();
+                    copyPassword();
+                }
             });
         </script>
     </body>
