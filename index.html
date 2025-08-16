@@ -191,6 +191,8 @@
                     ((e.ctrlKey && e.key === 'c') || (e.metaKey && e.key === 'c'))
                 ) {
                     e.preventDefault();
+                    pwField.select();
+                    pwField.setSelectionRange(0, 999); // for mobile devices
                     copyPassword();
                 }
             });
