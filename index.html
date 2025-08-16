@@ -14,6 +14,9 @@
             table td:hover {transform: translateY(-5px);}
             header a img {transition: transform 0.3s ease;}
             header a img:hover {transform: translateY(-2px);}
+            header a {
+                text-decoration: none;
+            }
         </style>
     </head>
     <body>
@@ -21,6 +24,10 @@
             <h1>George Davitiani • 
                 <a href="mailto:george.davitiani@hey.com">
                     <img src="assets/email-30.png" alt="Email" width="30" height="20" title="Email">
+                </a>
+                •
+                <a href="javascript:void(0);" onclick="openPwGen()" class="pwgen-icon">
+                    <img src="assets/pswd.png" alt="Password Generator" width="50" height="16" title="Password Generator">
                 </a>
             </h1>
         </header>
@@ -83,5 +90,103 @@
         <footer>
             <p>&copy; 2025 George Davitiani. All rights reserved.</p>
         </footer>
+        <!-- Password Generator Modal (hidden by default) -->
+        <div id="pwgen-modal"
+            style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.18);z-index:10000;">
+            <div
+                style="background:#fff;color:#000;border:2px solid #000;border-radius:10px;max-width:350px;width:92vw;padding:20px;box-sizing:border-box;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
+                <div style="text-align:right;">
+                    <button onclick="closePwGen()"
+                        style="background:#fff;border:1px solid #000;color:#000;font-size:16px;padding:2px 8px;cursor:pointer;"
+                        title="Close">&times;</button>
+                </div>
+                <h3 style="margin-top:0;">Random Password Generator</h3>
+                <form id="pwForm" onsubmit="return false;">
+                    <label>
+                        Password Length:
+                        <input type="number" id="length" min="12" max="64" value="16" style="width:50px;">
+                    </label>
+                    <br><br>
+                    <label>
+                        <input type="checkbox" id="uppercase" checked style="accent-color: black;">
+                        Include Uppercase Letters
+                    </label>
+                    <br>
+                    <label>
+                        <input type="checkbox" id="numbers" checked style="accent-color: black;">
+                        Include Numbers
+                    </label>
+                    <br>
+                    <label>
+                        <input type="checkbox" id="special" checked style="accent-color: black;">
+                        Include Special Characters
+                    </label>
+                    <br><br>
+                    <button type="button" onclick="generatePassword()"
+                        style="background:#fff;border:1px solid #000;color:#000;padding:2px 12px;cursor:pointer;">Generate
+                        Password</button>
+                </form>
+                <br>
+                <label>
+                    Generated Password:<br>
+                    <input type="text" id="result" readonly style="width:80%;">
+                    <button type="button" onclick="copyPassword()"
+                        style="background:#fff;border:1px solid #000;color:#000;padding:2px 7px;cursor:pointer;">Copy</button>
+                </label>
+            </div>
+        </div>
+        <noscript>
+            <style>
+                #pwgen-modal, .pwgen-icon { display: none !important; }
+            </style>
+            <div style="color: #b00; font-size: 15px; margin: 10px 0;">
+                The password generator requires JavaScript to work.
+            </div>
+        </noscript>
+        <script>
+            function openPwGen() {
+                document.getElementById('pwgen-modal').style.display = 'block';
+            }
+            function closePwGen() {
+                document.getElementById('pwgen-modal').style.display = 'none';
+            }
+            function generatePassword() {
+                const lower = "abcdefghijklmnopqrstuvwxyz";
+                const upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+                const numbers = "0123456789";
+                const special = "!@#$%^&*()-_=+[]{};:,.<>/?|\\";
+                let charset = lower;
+                if (document.getElementById('uppercase').checked) charset += upper;
+                if (document.getElementById('numbers').checked) charset += numbers;
+                if (document.getElementById('special').checked) charset += special;
+                let len = parseInt(document.getElementById('length').value, 10);
+                if (isNaN(len) || len < 12) len = 12;
+                if (len > 64) len = 64;
+                if (charset.length === 0) {
+                    document.getElementById('result').value = "Please select at least one character set!";
+                    return;
+                }
+                let pw = "";
+                for (let i = 0; i < len; i++) {
+                    const idx = Math.floor(Math.random() * charset.length);
+                    pw += charset[idx];
+                }
+                document.getElementById('result').value = pw;
+            }
+            function copyPassword() {
+                const pwField = document.getElementById('result');
+                if (navigator.clipboard && window.isSecureContext) {
+                    navigator.clipboard.writeText(pwField.value);
+                } else {
+                    pwField.select();
+                    pwField.setSelectionRange(0, 999); // for mobile devices
+                    document.execCommand('copy');
+                }
+            }
+            // Optional: close modal with Escape key
+            document.addEventListener('keydown', function (e) {
+                if (e.key === "Escape") closePwGen();
+            });
+        </script>
     </body>
 </html>
