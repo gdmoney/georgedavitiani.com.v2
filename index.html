@@ -184,17 +184,6 @@
             // Optional: close modal with Escape key
             document.addEventListener('keydown', function (e) {
                 if (e.key === "Escape") closePwGen();
-                // Copy password with Ctrl+C (Windows/Linux) or Cmd+C (Mac) when input is focused
-                const pwField = document.getElementById('result');
-                if (
-                    document.activeElement === pwField &&
-                    ((e.ctrlKey && e.key === 'c') || (e.metaKey && e.key === 'c'))
-                ) {
-                    e.preventDefault();
-                    pwField.select();
-                    pwField.setSelectionRange(0, 999); // for mobile devices
-                    copyPassword();
-                }
             });
         </script>
     </body>
