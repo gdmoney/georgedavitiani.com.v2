@@ -1,5 +1,31 @@
+let modalLoaded = false;
+
 function openPwGen() {
-    document.getElementById('pwgen-modal').style.display = 'block';
+    if (!modalLoaded) {
+        // Show loading state
+        const loadingDiv = document.createElement('div');
+        loadingDiv.id = 'pwgen-loading';
+        loadingDiv.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#fff;border:2px solid #000;padding:20px;z-index:10000;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;';
+        loadingDiv.innerHTML = 'Loading password generator...';
+        document.body.appendChild(loadingDiv);
+        
+        // Fetch and load the modal
+        fetch('password-modal.html')
+            .then(response => response.text())
+            .then(html => {
+                document.body.insertAdjacentHTML('beforeend', html);
+                modalLoaded = true;
+                document.body.removeChild(loadingDiv);
+                document.getElementById('pwgen-modal').style.display = 'block';
+            })
+            .catch(error => {
+                console.error('Error loading password generator:', error);
+                document.body.removeChild(loadingDiv);
+                alert('Failed to load password generator. Please try again.');
+            });
+    } else {
+        document.getElementById('pwgen-modal').style.display = 'block';
+    }
 }
 
 function closePwGen() {
