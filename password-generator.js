@@ -44,31 +44,29 @@ function generatePassword() {
     let len = parseInt(document.getElementById('length').value, 10);
     if (isNaN(len) || len < 12) len = 12;
     if (len > 64) len = 64;
-    if (charset.length === 0) {
-        document.getElementById('result').value = "Please select at least one character set!";
-        return;
-    }
-    const randValues = new Uint32Array(len);
-    crypto.getRandomValues(randValues);
+    const max = Math.floor(0x100000000 / charset.length) * charset.length;
     let pw = "";
-    for (let i = 0; i < len; i++) {
-        pw += charset[randValues[i] % charset.length];
+    while (pw.length < len) {
+        const randValues = new Uint32Array(len - pw.length);
+        crypto.getRandomValues(randValues);
+        for (const val of randValues) {
+            if (val < max) pw += charset[val % charset.length];
+            if (pw.length === len) break;
+        }
     }
     document.getElementById('result').value = pw;
 }
 
 function copyPassword() {
     const pwField = document.getElementById('result');
-    if (navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(pwField.value);
-    } else {
-        pwField.select();
-        pwField.setSelectionRange(0, 999); // for mobile devices
-        document.execCommand('copy');
-    }
+    const btn = document.querySelector('#pwgen-modal button[onclick="copyPassword()"]');
+    navigator.clipboard.writeText(pwField.value).then(() => {
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = 'Copy', 1500);
+    });
 }
 
 // Close modal with Escape key
 document.addEventListener('keydown', function (e) {
-    if (e.key === "Escape") closePwGen();
+    if (e.key === "Escape" && document.getElementById('pwgen-modal')) closePwGen();
 });
