@@ -59,12 +59,13 @@ function generatePassword() {
 
 function copyPassword() {
     const pwField = document.getElementById('result');
+    const btn = document.querySelector('#pwgen-modal button[onclick="copyPassword()"]');
     navigator.clipboard.writeText(pwField.value).then(() => {
-        pwField.style.color = '#000';
-        pwField.style.fontWeight = 'bold';
+        btn.style.background = '#000';
+        btn.style.color = '#fff';
         setTimeout(() => {
-            pwField.style.color = '';
-            pwField.style.fontWeight = '';
+            btn.style.background = '';
+            btn.style.color = '';
         }, 1500);
     });
 }
