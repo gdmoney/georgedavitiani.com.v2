@@ -48,10 +48,11 @@ function generatePassword() {
         document.getElementById('result').value = "Please select at least one character set!";
         return;
     }
+    const randValues = new Uint32Array(len);
+    crypto.getRandomValues(randValues);
     let pw = "";
     for (let i = 0; i < len; i++) {
-        const idx = Math.floor(Math.random() * charset.length);
-        pw += charset[idx];
+        pw += charset[randValues[i] % charset.length];
     }
     document.getElementById('result').value = pw;
 }
